@@ -38,10 +38,15 @@
         #pragma config EBTR1  = OFF
         #pragma config EBTRB  = OFF       
 
+/////////////////////////////////// Globals
+#define SPI_BUFF_SIZE 40
+volatile static unsigned char ringbuffer[ SPI_BUFF_SIZE ];
+volatile static unsigned short getindex = 0;
+volatile static unsigned short putindex = 0;
+volatile static unsigned short buffersize = 0;
 
-
-
-unsigned char  spi_rx_flag=0, spi_rx_char; 
+unsigned char spiInCnt,spiIn[SPI_BUFF_SIZE],spiOut,spi_rx_flag=0, spi_rx_char; 
+volatile unsigned char rxDta;
 
 
 void initSpiSlave(void) 
@@ -68,14 +73,129 @@ void initSpiSlave(void)
     SSPCON1bits.SSPEN = 1; //Idle state is high level, FOSC/64, enable SPI 
 } 
 
+/*///////////////////////////////////////////////////////
+		Sub Routines
+*////////////////////////////////////////////////////////
 
+
+/*
+	if(spiInCnt < SPI_BUFF_SIZE)
+		spiIn[spiInCnt++] = SSPBUF;
+	else
+		spiInCnt = 0;
+*/
+
+/*////////////////////////////////////////////////*/
+
+void putRing( unsigned char c )
+{
+	if ( buffersize >= sizeof ringbuffer ){
+		}
+	
+	ringbuffer[ putindex ] = c;
+	putindex++;
+	if ( putindex >= sizeof ringbuffer )
+	putindex = 0;
+	buffersize++;
+}
+
+/*////////////////////////////////////////////////*/
+
+int getRing( void )
+{
+unsigned char c;
+	if ( !buffersize ){
+		return -1;
+		}
+	buffersize--;
+	c = ringbuffer[ getindex ];
+	getindex++;
+	if ( getindex >= sizeof ringbuffer )
+		getindex = 0;
+	return c;
+}
+
+/*////////////////////////////////////////////////*/
+
+void processDataPkt(void)
+{
+unsigned char c;
+while(buffersize){
+	c=getRing();
+	if(!c){
+		}
+	else{
+		switch(c){
+			case 0x31:{
+				if(PORTCbits.RC0 == 1) 		
+					LATCbits.LATC0 = 0;
+				else
+					LATCbits.LATC0 = 1;
+				}
+				break;
+			case 0x32:{ 		
+				if(PORTCbits.RC1 == 1) 		
+					LATCbits.LATC1 = 0;
+				else
+					LATCbits.LATC1 = 1;
+				}
+				break;
+			case 0x33:{ 		
+				if(PORTCbits.RC2 == 1) 		
+					LATCbits.LATC2 = 0;
+				else
+					LATCbits.LATC2 = 1;
+				}
+				break;
+			case 0x34:{ 		
+				if(PORTCbits.RC3 == 1) 		
+					LATCbits.LATC3 = 0;
+				else
+					LATCbits.LATC3 = 1;
+				}
+				break;
+			case 0x35:{ 		
+				if(PORTCbits.RC4 == 1) 		
+					LATCbits.LATC4 = 0;
+				else
+					LATCbits.LATC4 = 1;
+				}
+				break;
+			case 0x36:{ 		
+				if(PORTCbits.RC5 == 1) 		
+					LATCbits.LATC5 = 0;
+				else
+					LATCbits.LATC5 = 1;
+				}
+				break;
+			case 0x37:{ 		
+				if(PORTBbits.RB5 == 1) 		
+					LATBbits.LATB5 = 0;
+				else
+					LATBbits.LATB5 = 1;
+				}
+				break;
+			case 0x38:{ 		
+				if(PORTBbits.RB7 == 1) 		
+					LATBbits.LATB7 = 0;
+				else
+					LATBbits.LATB7 = 1;
+				}
+				break;
+			}
+		}	
+	
+	}		
+}	
+
+/*///////////////////////////////////////////////////////
+		Interrupt Handlers
+*////////////////////////////////////////////////////////
 
 #pragma interrupt spi_rx_handler 
 
 void spi_rx_handler (void){
-	spi_rx_flag = 1; 
-    spi_rx_char = SSPBUF;//getcSPI();
-while(SSPSTATbits.BF);
+	putRing(SSPBUF);
 	PIR1bits.SSPIF = 0;
     INTCONbits.GIE = 1; 
 	} 
@@ -90,13 +210,11 @@ void rx_interrupt (void)
 
 
 
+/*///////////////////////////////////////////////////////
+		Main()
+*////////////////////////////////////////////////////////
 
-void main(void)
-{   
-
-unsigned long t;	
-unsigned char spiInCnt,spiIn[20],spiOut;  
-//	OSCCON = 0b00110000;
+void main(void){   
 	OSCCON = 0b01100000;
 
 	ANSEL = 0;						// all pins to digital mode
@@ -106,77 +224,24 @@ unsigned char spiInCnt,spiIn[20],spiOut;
 	TRISC = 0;	
 	
 	T3CON = 0xb1;					// 16 bit, 8:1 prescale, running
-		LATB = 0;
-		LATC = 0;
+	LATB = 0;
+	LATC = 0;
 
 	initSpiSlave();
 
     // Enable all high priority interrupts 
     INTCONbits.GIE = 1; 
     INTCONbits.PEIE = 1; 
- 	while(1) {
 
-if (spi_rx_flag){
-	spi_rx_flag = 0;
-	switch(spi_rx_char){
-		case 0x31:{
-			if(PORTCbits.RC0 == 1) 		
-				LATCbits.LATC0 = 0;
-			else
-				LATCbits.LATC0 = 1;
+	
+	while(1){
+		if(buffersize){
+			//There are characters in buffer
+			processDataPkt();
 			}
-			break;
-		case 0x32:{ 		
-			if(PORTCbits.RC1 == 1) 		
-				LATCbits.LATC1 = 0;
-			else
-				LATCbits.LATC1 = 1;
-			}
-			break;
-		case 0x33:{ 		
-			if(PORTCbits.RC2 == 1) 		
-				LATCbits.LATC2 = 0;
-			else
-				LATCbits.LATC2 = 1;
-			}
-			break;
-		case 0x34:{ 		
-			if(PORTCbits.RC3 == 1) 		
-				LATCbits.LATC3 = 0;
-			else
-				LATCbits.LATC3 = 1;
-			}
-			break;
-		case 0x35:{ 		
-			if(PORTCbits.RC4 == 1) 		
-				LATCbits.LATC4 = 0;
-			else
-				LATCbits.LATC4 = 1;
-			}
-			break;
-		case 0x36:{ 		
-			if(PORTCbits.RC5 == 1) 		
-				LATCbits.LATC5 = 0;
-			else
-				LATCbits.LATC5 = 1;
-			}
-			break;
-		case 0x37:{ 		
-			if(PORTBbits.RB5 == 1) 		
-				LATBbits.LATB5 = 0;
-			else
-				LATBbits.LATB5 = 1;
-			}
-			break;
-		case 0x38:{ 		
-			if(PORTBbits.RB7 == 1) 		
-				LATBbits.LATB7 = 0;
-			else
-				LATBbits.LATB7 = 1;
-			}
-			break;
-		}
-}		
-	} 
+	}		
+		
+			
+ 
 }
 
