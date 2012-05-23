@@ -1,4 +1,3 @@
-
 #include <p18cxxx.h>
 
 #include <stdio.h>
@@ -40,7 +39,12 @@
         #pragma config EBTRB  = OFF       
 
 
-void spi_slave(void) 
+
+
+unsigned char  spi_rx_flag=0, spi_rx_char; 
+
+
+void initSpiSlave(void) 
 { 
 
     ANSELH = 0; // RC6 digital: SS 
@@ -55,9 +59,37 @@ void spi_slave(void)
     //SSPSTATbits.SMP = 0; // must be cleared in slave mode 
     //SSPSTATbits.CKE = 0; //Transmitting when from active to idle 
 //    OpenSPI(SLV_SSOFF, MODE_00, SMPEND); 
+    // Enable SPI interrupt 
+	PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1; 
+    // Make SPI receive interrupt high priority 
+    IPR1bits.SSPIP = 1; 
     OpenSPI(SLV_SSON, MODE_00, SMPEND); 
     SSPCON1bits.SSPEN = 1; //Idle state is high level, FOSC/64, enable SPI 
 } 
+
+
+
+#pragma interrupt spi_rx_handler 
+
+void spi_rx_handler (void){
+	spi_rx_flag = 1; 
+    spi_rx_char = SSPBUF;//getcSPI();
+while(SSPSTATbits.BF);
+	PIR1bits.SSPIF = 0;
+    INTCONbits.GIE = 1; 
+	} 
+#pragma code rx_interrupt = 0x8 
+
+// This function handles all high priority interrupts 
+void rx_interrupt (void) 
+{ 
+    _asm goto spi_rx_handler _endasm 
+} 
+#pragma code 
+
+
+
 
 void main(void)
 {   
@@ -77,76 +109,72 @@ unsigned char spiInCnt,spiIn[20],spiOut;
 		LATB = 0;
 		LATC = 0;
 
-spi_slave();
+	initSpiSlave();
 
- 
-	while(1) {
+    // Enable all high priority interrupts 
+    INTCONbits.GIE = 1; 
+    INTCONbits.PEIE = 1; 
+ 	while(1) {
 
-if (SSPSTATbits.BF) 
-            {
-spiInCnt = 0;
-                spiIn[spiInCnt++] = SSPBUF;  // Retrieve received data 
-
-			//while(!SSPSTATbits.BF) 
-              //  spiIn[spiInCnt++] = SSPBUF;  // Retrieve received data 
-			
-switch(spiIn[0]){
-	case 0x31:{
-		if(PORTCbits.RC0 == 1) 		
-			LATCbits.LATC0 = 0;
-		else
-			LATCbits.LATC0 = 1;
-		}
-		break;
-	case 0x32:{ 		
-		if(PORTCbits.RC1 == 1) 		
-			LATCbits.LATC1 = 0;
-		else
-			LATCbits.LATC1 = 1;
-		}
-		break;
-	case 0x33:{ 		
-		if(PORTCbits.RC2 == 1) 		
-			LATCbits.LATC2 = 0;
-		else
-			LATCbits.LATC2 = 1;
-		}
-		break;
-	case 0x34:{ 		
-		if(PORTCbits.RC3 == 1) 		
-			LATCbits.LATC3 = 0;
-		else
-			LATCbits.LATC3 = 1;
-		}
-		break;
-	case 0x35:{ 		
-		if(PORTCbits.RC4 == 1) 		
-			LATCbits.LATC4 = 0;
-		else
-			LATCbits.LATC4 = 1;
-		}
-		break;
-	case 0x36:{ 		
-		if(PORTCbits.RC5 == 1) 		
-			LATCbits.LATC5 = 0;
-		else
-			LATCbits.LATC5 = 1;
-		}
-		break;
-	case 0x37:{ 		
-		if(PORTBbits.RB5 == 1) 		
-			LATBbits.LATB5 = 0;
-		else
-			LATBbits.LATB5 = 1;
-		}
-		break;
-	case 0x38:{ 		
-		if(PORTBbits.RB7 == 1) 		
-			LATBbits.LATB7 = 0;
-		else
-			LATBbits.LATB7 = 1;
-		}
-		break;
+if (spi_rx_flag){
+	spi_rx_flag = 0;
+	switch(spi_rx_char){
+		case 0x31:{
+			if(PORTCbits.RC0 == 1) 		
+				LATCbits.LATC0 = 0;
+			else
+				LATCbits.LATC0 = 1;
+			}
+			break;
+		case 0x32:{ 		
+			if(PORTCbits.RC1 == 1) 		
+				LATCbits.LATC1 = 0;
+			else
+				LATCbits.LATC1 = 1;
+			}
+			break;
+		case 0x33:{ 		
+			if(PORTCbits.RC2 == 1) 		
+				LATCbits.LATC2 = 0;
+			else
+				LATCbits.LATC2 = 1;
+			}
+			break;
+		case 0x34:{ 		
+			if(PORTCbits.RC3 == 1) 		
+				LATCbits.LATC3 = 0;
+			else
+				LATCbits.LATC3 = 1;
+			}
+			break;
+		case 0x35:{ 		
+			if(PORTCbits.RC4 == 1) 		
+				LATCbits.LATC4 = 0;
+			else
+				LATCbits.LATC4 = 1;
+			}
+			break;
+		case 0x36:{ 		
+			if(PORTCbits.RC5 == 1) 		
+				LATCbits.LATC5 = 0;
+			else
+				LATCbits.LATC5 = 1;
+			}
+			break;
+		case 0x37:{ 		
+			if(PORTBbits.RB5 == 1) 		
+				LATBbits.LATB5 = 0;
+			else
+				LATBbits.LATB5 = 1;
+			}
+			break;
+		case 0x38:{ 		
+			if(PORTBbits.RB7 == 1) 		
+				LATBbits.LATB7 = 0;
+			else
+				LATBbits.LATB7 = 1;
+			}
+			break;
 		}
 }		
 	} 

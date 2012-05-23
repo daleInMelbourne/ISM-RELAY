@@ -1,26 +1,27 @@
 MPLINK 4.40, Linker
-Linker Map File - Created Wed May 23 16:08:48 2012
+Linker Map File - Created Wed May 23 18:17:25 2012
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
                 ---------  ---------  ---------  ---------  ---------
                _entry_scn       code   0x000000    program   0x000006
-                   .cinit    romdata   0x00102a    program   0x000002
-             .code_main.o       code   0x00102c    program   0x0000fc
-               _cinit_scn       code   0x001128    program   0x00009e
-         .code_spi_open.o       code   0x0011c6    program   0x000068
-                    .code       code   0x00122e    program   0x000020
-             _startup_scn       code   0x00124e    program   0x00001c
-           .code___init.o       code   0x00126a    program   0x000002
-        .romdata___init.o    romdata   0x00126c    program   0x000000
-        .idata___init.o_i    romdata   0x00126c    program   0x000000
-      .romdata_spi_open.o    romdata   0x00126c    program   0x000000
-      .idata_spi_open.o_i    romdata   0x00126c    program   0x000000
-         .idata_c018i.o_i    romdata   0x00126c    program   0x000000
-         .romdata_c018i.o    romdata   0x00126c    program   0x000000
-            .code_c018i.o       code   0x00126c    program   0x000000
-          .idata_main.o_i    romdata   0x00126c    program   0x000000
-          .romdata_main.o    romdata   0x00126c    program   0x000000
+             rx_interrupt       code   0x000008    program   0x000006
+                   .cinit    romdata   0x00102a    program   0x00000e
+             .code_main.o       code   0x001038    program   0x000102
+               _cinit_scn       code   0x00113a    program   0x00009e
+         .code_spi_open.o       code   0x0011d8    program   0x000068
+                    .code       code   0x001240    program   0x000020
+             _startup_scn       code   0x001260    program   0x00001c
+           .code___init.o       code   0x00127c    program   0x000002
+         .romdata_c018i.o    romdata   0x00127e    program   0x000000
+          .idata_main.o_i    romdata   0x00127e    program   0x000001
+          .romdata_main.o    romdata   0x00127e    program   0x000000
+        .romdata___init.o    romdata   0x00127e    program   0x000000
+      .romdata_spi_open.o    romdata   0x00127e    program   0x000000
+      .idata_spi_open.o_i    romdata   0x00127e    program   0x000000
+        .idata___init.o_i    romdata   0x00127f    program   0x000000
+         .idata_c018i.o_i    romdata   0x00127f    program   0x000000
+            .code_c018i.o       code   0x001280    program   0x000000
     .config_300000_main.o    romdata   0x300000    program   0x000001
     .config_300001_main.o    romdata   0x300001    program   0x000001
     .config_300002_main.o    romdata   0x300002    program   0x000001
@@ -34,15 +35,15 @@ Linker Map File - Created Wed May 23 16:08:48 2012
     .config_30000c_main.o    romdata   0x30000c    program   0x000001
     .config_30000d_main.o    romdata   0x30000d    program   0x000001
                 MATH_DATA      udata   0x000000       data   0x000002
-                 .tmpdata      udata   0x000002       data   0x000002
+                 .tmpdata      udata   0x000002       data   0x000000
            .udata_c018i.o      udata   0x000060       data   0x00000a
-           .idata_c018i.o      idata   0x00006a       data   0x000000
-            .udata_main.o      udata   0x00006a       data   0x000000
-            .idata_main.o      idata   0x00006a       data   0x000000
-        .udata_spi_open.o      udata   0x00006a       data   0x000000
-        .idata_spi_open.o      idata   0x00006a       data   0x000000
-          .udata___init.o      udata   0x00006a       data   0x000000
-          .idata___init.o      idata   0x00006a       data   0x000000
+            .udata_main.o      udata   0x00006a       data   0x000001
+            .idata_main.o      idata   0x00006b       data   0x000001
+           .idata_c018i.o      idata   0x00006c       data   0x000000
+        .udata_spi_open.o      udata   0x00006c       data   0x000000
+        .idata_spi_open.o      idata   0x00006c       data   0x000000
+          .udata___init.o      udata   0x00006c       data   0x000000
+          .idata___init.o      idata   0x00006c       data   0x000000
                    .stack      udata   0x000100       data   0x000040
               SFR_BANKED0      udata   0x000f53       data   0x00000d
             SFR_UNBANKED0      udata   0x000f60       data   0x0000a0
@@ -53,21 +54,23 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                                Start         End      
                            ---------   ---------      
                             0x000000    0x000005      
-                            0x00102a    0x00126b      
+                            0x000008    0x00000d      
+                            0x00102a    0x00127e      
                             0x300000    0x300003      
                             0x300005    0x300006      
                             0x300008    0x30000d      
-            596 out of 12344 program addresses used, program memory utilization is 4%
+            621 out of 12344 program addresses used, program memory utilization is 5%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                  OpenSPI   0x0011c6    program     extern C:\MCC18\v3_39\src\pmc_common\SPI\spi_open.c
+                  OpenSPI   0x0011d8    program     extern C:\MCC18\v3_39\src\pmc_common\SPI\spi_open.c
        ___return_lbl00000   0x000004    program     static                          
-       ___return_lbl00001   0x001268    program     static                          
-       ___return_lbl00002   0x0011c4    program     static                          
+       ___return_lbl00001   0x00127a    program     static                          
+       ___return_lbl00002   0x0011d6    program     static                          
+       ___return_lbl00004   0x00000c    program     static                          
                __config_0   0x300000    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_1   0x300001    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
               __config_10   0x30000c    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
@@ -80,23 +83,25 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                __config_7   0x300009    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_8   0x30000a    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_9   0x30000b    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                   __init   0x00126a    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
-            __zero_memory   0x00122e    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                _do_cinit   0x001128    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                   __init   0x00127c    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
+            __zero_memory   0x001240    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                _do_cinit   0x00113a    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                 _startup   0x00124e    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                compare_l   0x001244    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                copy_loop   0x00119a    program     static                          
-            copy_one_byte   0x0011a0    program     static                          
-                     done   0x0011c4    program     static                          
-             done_copying   0x0011ae    program     static                          
-                     loop   0x00125e    program     static                          
-                   loop_h   0x00123c    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   loop_l   0x001246    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                     main   0x001056    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                spi_slave   0x00102c    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                     test   0x001142    program     static                          
-               zero_block   0x00123c    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 _startup   0x001260    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                compare_l   0x001256    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                copy_loop   0x0011ac    program     static                          
+            copy_one_byte   0x0011b2    program     static                          
+                     done   0x0011d6    program     static                          
+             done_copying   0x0011c0    program     static                          
+             initSpiSlave   0x001038    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+                     loop   0x001270    program     static                          
+                   loop_h   0x00124e    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   loop_l   0x001258    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                     main   0x001088    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+             rx_interrupt   0x000008    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+           spi_rx_handler   0x001068    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+                     test   0x001154    program     static                          
+               zero_block   0x00124e    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    ADCON0   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
@@ -335,11 +340,12 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                      WREG   0x000fe8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 __FPFLAGS   0x000001       data     extern C:\MCC18\v3_39\src\traditional\math\cmath18.asm
             __FPFLAGSbits   0x000001       data     extern C:\MCC18\v3_39\src\traditional\math\cmath18.asm
-                  __tmp_0   0x000002       data     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                 curr_byte   0x000063       data     static C:\MCC18\v3_39\src\traditional\startup\c018i.c
                curr_entry   0x000065       data     static C:\MCC18\v3_39\src\traditional\startup\c018i.c
                  data_ptr   0x000067       data     static C:\MCC18\v3_39\src\traditional\startup\c018i.c
                      prom   0x000060       data     static C:\MCC18\v3_39\src\traditional\startup\c018i.c
+              spi_rx_char   0x00006a       data     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+              spi_rx_flag   0x00006b       data     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
 
 
 
@@ -348,25 +354,28 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                 ---------  ---------  ---------  --------- ---------                
                    _entry   0x000000    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
        ___return_lbl00000   0x000004    program     static                          
-                spi_slave   0x00102c    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                     main   0x001056    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                _do_cinit   0x001128    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                     test   0x001142    program     static                          
-                copy_loop   0x00119a    program     static                          
-            copy_one_byte   0x0011a0    program     static                          
-             done_copying   0x0011ae    program     static                          
-       ___return_lbl00002   0x0011c4    program     static                          
-                     done   0x0011c4    program     static                          
-                  OpenSPI   0x0011c6    program     extern C:\MCC18\v3_39\src\pmc_common\SPI\spi_open.c
-            __zero_memory   0x00122e    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-               zero_block   0x00123c    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   loop_h   0x00123c    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                compare_l   0x001244    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   loop_l   0x001246    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 _startup   0x00124e    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                     loop   0x00125e    program     static                          
-       ___return_lbl00001   0x001268    program     static                          
-                   __init   0x00126a    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
+             rx_interrupt   0x000008    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+       ___return_lbl00004   0x00000c    program     static                          
+             initSpiSlave   0x001038    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+           spi_rx_handler   0x001068    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+                     main   0x001088    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+                _do_cinit   0x00113a    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                     test   0x001154    program     static                          
+                copy_loop   0x0011ac    program     static                          
+            copy_one_byte   0x0011b2    program     static                          
+             done_copying   0x0011c0    program     static                          
+       ___return_lbl00002   0x0011d6    program     static                          
+                     done   0x0011d6    program     static                          
+                  OpenSPI   0x0011d8    program     extern C:\MCC18\v3_39\src\pmc_common\SPI\spi_open.c
+            __zero_memory   0x001240    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+               zero_block   0x00124e    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   loop_h   0x00124e    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                compare_l   0x001256    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   loop_l   0x001258    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 _startup   0x001260    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                     loop   0x001270    program     static                          
+       ___return_lbl00001   0x00127a    program     static                          
+                   __init   0x00127c    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
                __config_0   0x300000    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_1   0x300001    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_2   0x300002    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
@@ -382,29 +391,30 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                      SIGN   0x000000       data     extern C:\MCC18\v3_39\src\traditional\math\cmath18.asm
             __FPFLAGSbits   0x000001       data     extern C:\MCC18\v3_39\src\traditional\math\cmath18.asm
                 __FPFLAGS   0x000001       data     extern C:\MCC18\v3_39\src\traditional\math\cmath18.asm
-                  __tmp_0   0x000002       data     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                      prom   0x000060       data     static C:\MCC18\v3_39\src\traditional\startup\c018i.c
                 curr_byte   0x000063       data     static C:\MCC18\v3_39\src\traditional\startup\c018i.c
                curr_entry   0x000065       data     static C:\MCC18\v3_39\src\traditional\startup\c018i.c
                  data_ptr   0x000067       data     static C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                 UEP0bits   0x000f53       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+              spi_rx_char   0x00006a       data     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+              spi_rx_flag   0x00006b       data     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                      UEP0   0x000f53       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 UEP1bits   0x000f54       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 UEP0bits   0x000f53       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      UEP1   0x000f54       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 UEP1bits   0x000f54       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      UEP2   0x000f55       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  UEP2bits   0x000f55       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      UEP3   0x000f56       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  UEP3bits   0x000f56       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      UEP4   0x000f57       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  UEP4bits   0x000f57       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                     UEP5   0x000f58       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  UEP5bits   0x000f58       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                     UEP5   0x000f58       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  UEP6bits   0x000f59       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      UEP6   0x000f59       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  UEP7bits   0x000f5a       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      UEP7   0x000f5a       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 UEIEbits   0x000f5b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      UEIE   0x000f5b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 UEIEbits   0x000f5b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 UADDRbits   0x000f5c       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     UADDR   0x000f5c       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     UFRML   0x000f5d       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
@@ -415,64 +425,64 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                      UEIR   0x000f5f       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   UIEbits   0x000f60       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                       UIE   0x000f60       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 UCFGbits   0x000f61       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      UCFG   0x000f61       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                      UIR   0x000f62       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 UCFGbits   0x000f61       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   UIRbits   0x000f62       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                    USTAT   0x000f63       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                      UIR   0x000f62       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 USTATbits   0x000f63       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                     UCON   0x000f64       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                    USTAT   0x000f63       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  UCONbits   0x000f64       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                     UCON   0x000f64       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                SRCON0bits   0x000f68       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    SRCON0   0x000f68       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   SRCON1   0x000f69       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                SRCON1bits   0x000f69       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-              CM2CON0bits   0x000f6b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   SRCON1   0x000f69       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   CM2CON0   0x000f6b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-              CM2CON1bits   0x000f6c       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+              CM2CON0bits   0x000f6b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   CM2CON1   0x000f6c       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+              CM2CON1bits   0x000f6c       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               CM1CON0bits   0x000f6d       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   CM1CON0   0x000f6d       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                SSPMSKbits   0x000f6f       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    SSPMSK   0x000f6f       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-               SLRCONbits   0x000f76       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    SLRCON   0x000f76       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+               SLRCONbits   0x000f76       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      WPUA   0x000f77       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  WPUAbits   0x000f77       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                     WPUB   0x000f78       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  WPUBbits   0x000f78       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                     IOCA   0x000f79       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                     WPUB   0x000f78       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  IOCAbits   0x000f79       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 IOCBbits   0x000f7a       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                     IOCA   0x000f79       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      IOCB   0x000f7a       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                    ANSEL   0x000f7e       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 IOCBbits   0x000f7a       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 ANSELbits   0x000f7e       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   ANSELH   0x000f7f       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                    ANSEL   0x000f7e       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                ANSELHbits   0x000f7f       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   ANSELH   0x000f7f       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     PORTA   0x000f80       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 PORTAbits   0x000f80       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     PORTB   0x000f81       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 PORTBbits   0x000f81       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     PORTC   0x000f82       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 PORTCbits   0x000f82       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 LATAbits   0x000f89       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      LATA   0x000f89       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 LATBbits   0x000f8a       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 LATAbits   0x000f89       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      LATB   0x000f8a       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                     LATC   0x000f8b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 LATBbits   0x000f8a       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  LATCbits   0x000f8b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                     LATC   0x000f8b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     TRISA   0x000f92       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 TRISAbits   0x000f92       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 DDRAbits   0x000f92       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      DDRA   0x000f92       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 DDRBbits   0x000f93       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                    TRISB   0x000f93       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 DDRAbits   0x000f92       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      DDRB   0x000f93       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 TRISBbits   0x000f93       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                TRISCbits   0x000f94       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                    TRISC   0x000f94       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                    TRISB   0x000f93       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 DDRBbits   0x000f93       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  DDRCbits   0x000f94       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      DDRC   0x000f94       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                    TRISC   0x000f94       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                TRISCbits   0x000f94       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               OSCTUNEbits   0x000f9b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   OSCTUNE   0x000f9b       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  PIE1bits   0x000f9d       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
@@ -487,12 +497,12 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                      PIR2   0x000fa1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      IPR2   0x000fa2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  IPR2bits   0x000fa2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-               EECON1bits   0x000fa6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    EECON1   0x000fa6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+               EECON1bits   0x000fa6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    EECON2   0x000fa7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    EEDATA   0x000fa8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                EEADRbits   0x000fa9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     EEADR   0x000fa9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                EEADRbits   0x000fa9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 RCSTAbits   0x000fab       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     RCSTA   0x000fab       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     TXSTA   0x000fac       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
@@ -507,28 +517,28 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                     TMR3H   0x000fb3       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               ECCP1ASbits   0x000fb6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   ECCP1AS   0x000fb6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-              PWM1CONbits   0x000fb7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   PWM1CON   0x000fb7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-              BAUDCONbits   0x000fb8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                  BAUDCON   0x000fb8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                  BAUDCTL   0x000fb8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+              PWM1CONbits   0x000fb7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               BAUDCTLbits   0x000fb8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                  BAUDCON   0x000fb8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+              BAUDCONbits   0x000fb8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                  BAUDCTL   0x000fb8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               PSTRCONbits   0x000fb9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   PSTRCON   0x000fb9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-              REFCON0bits   0x000fba       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   REFCON0   0x000fba       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-             VREFCON0bits   0x000fba       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+              REFCON0bits   0x000fba       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  VREFCON0   0x000fba       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                  REFCON1   0x000fbb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-              REFCON1bits   0x000fbb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+             VREFCON0bits   0x000fba       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
              VREFCON1bits   0x000fbb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  VREFCON1   0x000fbb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                  REFCON2   0x000fbc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+              REFCON1bits   0x000fbb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                  REFCON1   0x000fbb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               REFCON2bits   0x000fbc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                  REFCON2   0x000fbc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
              VREFCON2bits   0x000fbc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  VREFCON2   0x000fbc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                  CCP1CON   0x000fbd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               CCP1CONbits   0x000fbd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                  CCP1CON   0x000fbd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     CCPR1   0x000fbe       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    CCPR1L   0x000fbe       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    CCPR1H   0x000fbf       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
@@ -536,43 +546,43 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                    ADCON2   0x000fc0       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                ADCON1bits   0x000fc1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   ADCON0   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   ADCON0   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     ADRES   0x000fc3       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    ADRESL   0x000fc3       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    ADRESH   0x000fc4       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                  SSPCON2   0x000fc5       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               SSPCON2bits   0x000fc5       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                  SSPCON2   0x000fc5       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               SSPCON1bits   0x000fc6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   SSPCON1   0x000fc6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                  SSPSTAT   0x000fc7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               SSPSTATbits   0x000fc7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                  SSPSTAT   0x000fc7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    SSPADD   0x000fc8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    SSPBUF   0x000fc9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 T2CONbits   0x000fca       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     T2CON   0x000fca       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                       PR2   0x000fcb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      TMR2   0x000fcc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                    T1CON   0x000fcd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 T1CONbits   0x000fcd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                    T1CON   0x000fcd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     TMR1L   0x000fce       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     TMR1H   0x000fcf       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  RCONbits   0x000fd0       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      RCON   0x000fd0       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   WDTCON   0x000fd1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                WDTCONbits   0x000fd1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   WDTCON   0x000fd1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   OSCCON2   0x000fd2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
               OSCCON2bits   0x000fd2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-               OSCCONbits   0x000fd3       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    OSCCON   0x000fd3       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+               OSCCONbits   0x000fd3       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                 T0CONbits   0x000fd5       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     T0CON   0x000fd5       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     TMR0L   0x000fd6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     TMR0H   0x000fd7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   STATUS   0x000fd8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                STATUSbits   0x000fd8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                    FSR2L   0x000fd9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   STATUS   0x000fd8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      FSR2   0x000fd9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                    FSR2L   0x000fd9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     FSR2H   0x000fda       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    PLUSW2   0x000fdb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   PREINC2   0x000fdc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
@@ -580,18 +590,18 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                  POSTINC2   0x000fde       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     INDF2   0x000fdf       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                       BSR   0x000fe0       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                    FSR1L   0x000fe1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      FSR1   0x000fe1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                    FSR1L   0x000fe1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     FSR1H   0x000fe2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    PLUSW1   0x000fe3       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   PREINC1   0x000fe4       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  POSTDEC1   0x000fe5       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                  POSTINC1   0x000fe6       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     INDF1   0x000fe7       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                     WREG   0x000fe8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                         W   0x000fe8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                    FSR0L   0x000fe9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                     WREG   0x000fe8       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      FSR0   0x000fe9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                    FSR0L   0x000fe9       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                     FSR0H   0x000fea       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    PLUSW0   0x000feb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                   PREINC0   0x000fec       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
@@ -618,8 +628,8 @@ Linker Map File - Created Wed May 23 16:08:48 2012
                    PCLATU   0x000ffb       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    STKPTR   0x000ffc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                STKPTRbits   0x000ffc       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                      TOS   0x000ffd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      TOSL   0x000ffd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                      TOS   0x000ffd       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      TOSH   0x000ffe       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      TOSU   0x000fff       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
 
