@@ -130,7 +130,7 @@ void main(void)
 {   
 
 unsigned long t;	
-unsigned char spiIn,spiOut;  
+unsigned char spiInCnt,spiIn[20],spiOut;  
 //	OSCCON = 0b00110000;
 	OSCCON = 0b01100000;
 
@@ -155,21 +155,14 @@ while(1){
 }
 */
  if (SSPSTATbits.BF) 
-            { 
-                spiIn = SSPBUF;  // Retrieve received data 
-//                SSPBUF = 0xa5;//spiOut; // Send message back 
+            {
+spiInCnt = 0;
+                spiIn[spiInCnt++] = SSPBUF;  // Retrieve received data 
 
-/*
-if(spiIn == 0xaf){
-        SSPBUF = 0xa5;//spiOut; // Send message back 
-		LATCbits.LATC5 = 1;
-		delay_mS(DELAY);
-		LATCbits.LATC5 = 0;
-		delay_mS(DELAY);
-}*/
-             
-
-switch(spiIn){
+			//while(!SSPSTATbits.BF) 
+                spiIn[spiInCnt++] = SSPBUF;  // Retrieve received data 
+			
+switch(spiIn[1]){
 	case 0x31:{
 		if(PORTCbits.RC0 == 1) 		
 			LATCbits.LATC0 = 0;

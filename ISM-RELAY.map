@@ -1,5 +1,5 @@
 MPLINK 4.40, Linker
-Linker Map File - Created Mon May 21 17:15:54 2012
+Linker Map File - Created Tue May 22 17:36:47 2012
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -9,21 +9,21 @@ Linker Map File - Created Mon May 21 17:15:54 2012
 REMAPPED_HIGH_INTERRUPT_VECTOR       code   0x001008    program   0x000006
 REMAPPED_LOW_INTERRUPT_VECTOR       code   0x001018    program   0x000006
                    .cinit    romdata   0x00102a    program   0x000002
-             .code_main.o       code   0x00102c    program   0x000166
-               _cinit_scn       code   0x001192    program   0x00009e
-         .code_spi_open.o       code   0x001230    program   0x000068
-                    .code       code   0x001298    program   0x000020
-             _startup_scn       code   0x0012b8    program   0x00001c
-           .code___init.o       code   0x0012d4    program   0x000002
-        .romdata___init.o    romdata   0x0012d6    program   0x000000
-        .idata___init.o_i    romdata   0x0012d6    program   0x000000
-      .romdata_spi_open.o    romdata   0x0012d6    program   0x000000
-      .idata_spi_open.o_i    romdata   0x0012d6    program   0x000000
-         .idata_c018i.o_i    romdata   0x0012d6    program   0x000000
-         .romdata_c018i.o    romdata   0x0012d6    program   0x000000
-            .code_c018i.o       code   0x0012d6    program   0x000000
-          .idata_main.o_i    romdata   0x0012d6    program   0x000000
-          .romdata_main.o    romdata   0x0012d6    program   0x000000
+             .code_main.o       code   0x00102c    program   0x0001ac
+               _cinit_scn       code   0x0011d8    program   0x00009e
+         .code_spi_open.o       code   0x001276    program   0x000068
+                    .code       code   0x0012de    program   0x000020
+             _startup_scn       code   0x0012fe    program   0x00001c
+           .code___init.o       code   0x00131a    program   0x000002
+        .romdata___init.o    romdata   0x00131c    program   0x000000
+        .idata___init.o_i    romdata   0x00131c    program   0x000000
+      .romdata_spi_open.o    romdata   0x00131c    program   0x000000
+      .idata_spi_open.o_i    romdata   0x00131c    program   0x000000
+         .idata_c018i.o_i    romdata   0x00131c    program   0x000000
+         .romdata_c018i.o    romdata   0x00131c    program   0x000000
+            .code_c018i.o       code   0x00131c    program   0x000000
+          .idata_main.o_i    romdata   0x00131c    program   0x000000
+          .romdata_main.o    romdata   0x00131c    program   0x000000
     .config_300000_main.o    romdata   0x300000    program   0x000001
     .config_300001_main.o    romdata   0x300001    program   0x000001
     .config_300002_main.o    romdata   0x300002    program   0x000001
@@ -59,18 +59,18 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x001018    program   0x000006
                             0x001000    0x001005      
                             0x001008    0x00100d      
                             0x001018    0x00101d      
-                            0x00102a    0x0012d5      
+                            0x00102a    0x00131b      
                             0x300000    0x300003      
                             0x300005    0x300006      
                             0x300008    0x30000d      
-            720 out of 12344 program addresses used, program memory utilization is 5%
+            790 out of 12344 program addresses used, program memory utilization is 6%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                  OpenSPI   0x001230    program     extern C:\MCC18\v3_39\src\pmc_common\SPI\spi_open.c
+                  OpenSPI   0x001276    program     extern C:\MCC18\v3_39\src\pmc_common\SPI\spi_open.c
         Remapped_High_ISR   0x001008    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
          Remapped_Low_ISR   0x001018    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
   YourHighPriorityISRCode   0x00102c    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
@@ -78,9 +78,9 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x001018    program   0x000006
        ___return_lbl00000   0x000004    program     static                          
        ___return_lbl00000   0x001004    program     static                          
        ___return_lbl00001   0x00100c    program     static                          
-       ___return_lbl00001   0x0012d2    program     static                          
+       ___return_lbl00001   0x001318    program     static                          
        ___return_lbl00002   0x00101c    program     static                          
-       ___return_lbl00002   0x00122e    program     static                          
+       ___return_lbl00002   0x001274    program     static                          
                __config_0   0x300000    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_1   0x300001    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
               __config_10   0x30000c    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
@@ -93,26 +93,26 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x001018    program   0x000006
                __config_7   0x300009    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_8   0x30000a    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_9   0x30000b    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                   __init   0x0012d4    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
-            __zero_memory   0x001298    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                _do_cinit   0x001192    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                   __init   0x00131a    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
+            __zero_memory   0x0012de    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                _do_cinit   0x0011d8    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
                    _entry   0x000000    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
                    _reset   0x001000    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                 _startup   0x0012b8    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                compare_l   0x0012ae    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                copy_loop   0x001204    program     static                          
-            copy_one_byte   0x00120a    program     static                          
-                 delay_mS   0x001144    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                   dly1mS   0x001134    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                     done   0x00122e    program     static                          
-             done_copying   0x001218    program     static                          
-                     loop   0x0012c8    program     static                          
-                   loop_h   0x0012a6    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   loop_l   0x0012b0    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 _startup   0x0012fe    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                compare_l   0x0012f4    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                copy_loop   0x00124a    program     static                          
+            copy_one_byte   0x001250    program     static                          
+                 delay_mS   0x00118a    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+                   dly1mS   0x00117a    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+                     done   0x001274    program     static                          
+             done_copying   0x00125e    program     static                          
+                     loop   0x00130e    program     static                          
+                   loop_h   0x0012ec    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   loop_l   0x0012f6    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                      main   0x001086    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                 spi_slave   0x00105c    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                     test   0x0011ac    program     static                          
-               zero_block   0x0012a6    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                     test   0x0011f2    program     static                          
+               zero_block   0x0012ec    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    ADCON0   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                ADCON0bits   0x000fc2       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
                    ADCON1   0x000fc1       data     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
@@ -374,25 +374,25 @@ REMAPPED_LOW_INTERRUPT_VECTOR       code   0x001018    program   0x000006
    YourLowPriorityISRCode   0x00103a    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                 spi_slave   0x00105c    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                      main   0x001086    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                   dly1mS   0x001134    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                 delay_mS   0x001144    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
-                _do_cinit   0x001192    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                     test   0x0011ac    program     static                          
-                copy_loop   0x001204    program     static                          
-            copy_one_byte   0x00120a    program     static                          
-             done_copying   0x001218    program     static                          
-                     done   0x00122e    program     static                          
-       ___return_lbl00002   0x00122e    program     static                          
-                  OpenSPI   0x001230    program     extern C:\MCC18\v3_39\src\pmc_common\SPI\spi_open.c
-            __zero_memory   0x001298    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   loop_h   0x0012a6    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-               zero_block   0x0012a6    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                compare_l   0x0012ae    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                   loop_l   0x0012b0    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
-                 _startup   0x0012b8    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
-                     loop   0x0012c8    program     static                          
-       ___return_lbl00001   0x0012d2    program     static                          
-                   __init   0x0012d4    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
+                   dly1mS   0x00117a    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+                 delay_mS   0x00118a    program     extern C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
+                _do_cinit   0x0011d8    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                     test   0x0011f2    program     static                          
+                copy_loop   0x00124a    program     static                          
+            copy_one_byte   0x001250    program     static                          
+             done_copying   0x00125e    program     static                          
+                     done   0x001274    program     static                          
+       ___return_lbl00002   0x001274    program     static                          
+                  OpenSPI   0x001276    program     extern C:\MCC18\v3_39\src\pmc_common\SPI\spi_open.c
+            __zero_memory   0x0012de    program     extern C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   loop_h   0x0012ec    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+               zero_block   0x0012ec    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                compare_l   0x0012f4    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                   loop_l   0x0012f6    program     static C:\MCC18\v3_39\src\traditional\proc\p18F14K50.asm
+                 _startup   0x0012fe    program     extern C:\MCC18\v3_39\src\traditional\startup\c018i.c
+                     loop   0x00130e    program     static                          
+       ___return_lbl00001   0x001318    program     static                          
+                   __init   0x00131a    program     extern C:\MCC18\v3_39\src\traditional\stdclib\__init.c
                __config_0   0x300000    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_1   0x300001    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
                __config_2   0x300002    program     static C:\Program Files (x86)\National Instruments\LabVIEW 2010\vi.lib\LabVIEW Interface for Arduino\ISM-RLY\main.c
