@@ -40,73 +40,6 @@
         #pragma config EBTRB  = OFF       
 
 
-// prototypes
-void dly1mS(void);
-void delay_mS(unsigned int dly);
-
-
-/** VECTOR REMAPPING ***********************************************/
-// On PIC18 devices, addresses 0x00, 0x08, and 0x18 are used for
-// the reset, high priority interrupt, and low priority interrupt
-// vectors.  However, the current Microchip USB bootloader occupies
-// addresses 0x00-0xFFF. Therefore the bootloader code remaps these 
-// vectors to new locations.
-	
-	#define REMAPPED_RESET_VECTOR_ADDRESS				0x1000
-	#define REMAPPED_HIGH_INTERRUPT_VECTOR_ADDRESS	0x1008
-	#define REMAPPED_LOW_INTERRUPT_VECTOR_ADDRESS	0x1018
-
-	void YourHighPriorityISRCode();
-	void YourLowPriorityISRCode();
-	
-	extern void _startup (void);        // See c018i.c in your C18 compiler dir
-	#pragma code REMAPPED_RESET_VECTOR = REMAPPED_RESET_VECTOR_ADDRESS
-	void _reset (void)
-	{
-	    _asm goto _startup _endasm
-	}
-
-	#pragma code REMAPPED_HIGH_INTERRUPT_VECTOR = REMAPPED_HIGH_INTERRUPT_VECTOR_ADDRESS
-	void Remapped_High_ISR (void)
-	{
-	     _asm goto YourHighPriorityISRCode _endasm
-	}
-	#pragma code REMAPPED_LOW_INTERRUPT_VECTOR = REMAPPED_LOW_INTERRUPT_VECTOR_ADDRESS
-	void Remapped_Low_ISR (void)
-	{
-	     _asm goto YourLowPriorityISRCode _endasm
-	}
-	#pragma code
-	
-	
-	//These are your actual interrupt handling routines.
-	#pragma interrupt YourHighPriorityISRCode
-	void YourHighPriorityISRCode()
-	{
-		//Check which interrupt flag caused the interrupt.
-		//Service the interrupt
-		//Clear the interrupt flag
-		//Etc.
-	}	//This return will be a "retfie fast", since this is in a #pragma interrupt section 
-
-	#pragma interruptlow YourLowPriorityISRCode
-	void YourLowPriorityISRCode()
-	{
-		//Check which interrupt flag caused the interrupt.
-		//Service the interrupt
-		//Clear the interrupt flag
-		//Etc.
-	
-	}	//This return will be a "retfie", since this is in a #pragma interruptlow section 
-
-	#pragma code
-
-#define LEDgrn	LATCbits.LATC4			// green led
-#define LEDred	LATCbits.LATC5			// red led
-#define DELAY	167						// delay in mS (167 = 2seconds for all 12 pins)
-
-
-
 void spi_slave(void) 
 { 
 
@@ -148,21 +81,16 @@ spi_slave();
 
  
 	while(1) {
-/*
-while(1){
-		LATCbits.LATC4 ^= 1;
-	//for(t=0; t<40;t++);
-}
-*/
- if (SSPSTATbits.BF) 
+
+if (SSPSTATbits.BF) 
             {
 spiInCnt = 0;
                 spiIn[spiInCnt++] = SSPBUF;  // Retrieve received data 
 
 			//while(!SSPSTATbits.BF) 
-                spiIn[spiInCnt++] = SSPBUF;  // Retrieve received data 
+              //  spiIn[spiInCnt++] = SSPBUF;  // Retrieve received data 
 			
-switch(spiIn[1]){
+switch(spiIn[0]){
 	case 0x31:{
 		if(PORTCbits.RC0 == 1) 		
 			LATCbits.LATC0 = 0;
@@ -224,18 +152,3 @@ switch(spiIn[1]){
 	} 
 }
 
-
-void dly1mS(void)
-{
-	TMR3H = (0-1500)>>8;						// 1500 * (8/12) = 1000uS
-	TMR3L = (0-1500)&0x0ff;					// must write TMR3 in this order
-	PIR2bits.TMR3IF = 0;
-	while(!PIR2bits.TMR3IF);				// wait 1mS
-}
-	
-	
-void delay_mS(unsigned int dly)
-{
-unsigned int x;
-	for(x=0; x<dly; x++) dly1mS();
-}	
