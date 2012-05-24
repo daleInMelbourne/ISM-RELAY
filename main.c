@@ -104,10 +104,10 @@ void putRing( unsigned char c )
 int getRing( void )
 {
 unsigned char c;
-	if ( !buffersize ){
+/*	if ( !buffersize ){
 		return -1;
 		}
-	buffersize--;
+*/	buffersize--;
 	c = ringbuffer[ getindex ];
 	getindex++;
 	if ( getindex >= sizeof ringbuffer )
@@ -119,22 +119,59 @@ unsigned char c;
 
 void processDataPkt(void)
 {
-unsigned char c;
+unsigned char c,relayMask,cnt;
 while(buffersize){
 	c=getRing();
 	switch(c){
 		//Get Command byte
 		case 0x46:{
-			switch(getRing()){
-				case 0x31:{
-					if(PORTCbits.RC0 == 1) 		
-						LATCbits.LATC0 = 0;
-					else
-						LATCbits.LATC0 = 1;
-					}
-					break;
-				}	
+			relayMask = getRing();//Mask out relay pattern
+			getRing(); // Spare byte, will be used later to determien read or write
+//			cnt=1;
+//			cnt= (cnt<<relayMask);
+			//Relay K1
+			if(cnt=(relayMask & 0x01))
+				LATCbits.LATC0 = 1;
+			else
+				LATCbits.LATC0 = 0;
+			//Relay K2
+			if(cnt=(relayMask & 0x02))
+				LATCbits.LATC1 = 1;
+			else
+				LATCbits.LATC1 = 0;
+			//Relay K3
+			if(cnt=(relayMask & 0x04))
+				LATCbits.LATC2 = 1;
+			else
+				LATCbits.LATC2 = 0;
+			//Relay K4
+			if(cnt=(relayMask & 0x08))
+				LATCbits.LATC3 = 1;
+			else
+				LATCbits.LATC3 = 0;
+			//Relay K5
+			if(cnt=(relayMask & 0x10))
+				LATCbits.LATC4 = 1;
+			else
+				LATCbits.LATC4 = 0;
+			//Relay K6
+			if(cnt=(relayMask & 0x20))
+				LATCbits.LATC5 = 1;
+			else
+				LATCbits.LATC5 = 0;
+			//Relay K7
+			if(cnt=(relayMask & 0x40))
+				LATBbits.LATB5 = 1;
+			else
+				LATBbits.LATB5 = 0;
+			//Relay K8
+			if(cnt=(relayMask & 0x80))
+				LATBbits.LATB7 = 1;
+			else
+				LATBbits.LATB7 = 0;
 		}		
+/////////////			
+			break;
 		case 0x45:{
 			switch(getRing()){
 				case 0x31:{
@@ -247,7 +284,7 @@ void main(void){
 
 	
 	while(1){
-		if(buffersize>1){
+		if(buffersize>2){
 			//There are characters in buffer
 			processDataPkt();
 			}
