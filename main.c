@@ -122,71 +122,83 @@ void processDataPkt(void)
 unsigned char c;
 while(buffersize){
 	c=getRing();
-	if(!c){
-		}
-	else{
-		switch(c){
-			case 0x31:{
-				if(PORTCbits.RC0 == 1) 		
-					LATCbits.LATC0 = 0;
-				else
-					LATCbits.LATC0 = 1;
+	switch(c){
+		//Get Command byte
+		case 0x46:{
+			switch(getRing()){
+				case 0x31:{
+					if(PORTCbits.RC0 == 1) 		
+						LATCbits.LATC0 = 0;
+					else
+						LATCbits.LATC0 = 1;
+					}
+					break;
+				}	
+		}		
+		case 0x45:{
+			switch(getRing()){
+				case 0x31:{
+					if(PORTCbits.RC0 == 1) 		
+						LATCbits.LATC0 = 0;
+					else
+						LATCbits.LATC0 = 1;
+					}
+					break;
+				case 0x32:{ 		
+					if(PORTCbits.RC1 == 1) 		
+						LATCbits.LATC1 = 0;
+					else
+						LATCbits.LATC1 = 1;
+					}
+					break;
+				case 0x33:{ 		
+					if(PORTCbits.RC2 == 1) 		
+						LATCbits.LATC2 = 0;
+					else
+						LATCbits.LATC2 = 1;
+					}
+					break;
+				case 0x34:{ 		
+					if(PORTCbits.RC3 == 1) 		
+						LATCbits.LATC3 = 0;
+					else
+						LATCbits.LATC3 = 1;
+					}
+					break;
+				case 0x35:{ 		
+					if(PORTCbits.RC4 == 1) 		
+						LATCbits.LATC4 = 0;
+					else
+						LATCbits.LATC4 = 1;
+					}
+					break;
+				case 0x36:{ 		
+					if(PORTCbits.RC5 == 1) 		
+						LATCbits.LATC5 = 0;
+					else
+						LATCbits.LATC5 = 1;
+					}
+					break;
+				case 0x37:{ 		
+					if(PORTBbits.RB5 == 1) 		
+						LATBbits.LATB5 = 0;
+					else
+						LATBbits.LATB5 = 1;
+					}
+					break;
+				case 0x38:{ 		
+					if(PORTBbits.RB7 == 1) 		
+						LATBbits.LATB7 = 0;
+					else
+						LATBbits.LATB7 = 1;
+					}
+					break;
 				}
-				break;
-			case 0x32:{ 		
-				if(PORTCbits.RC1 == 1) 		
-					LATCbits.LATC1 = 0;
-				else
-					LATCbits.LATC1 = 1;
-				}
-				break;
-			case 0x33:{ 		
-				if(PORTCbits.RC2 == 1) 		
-					LATCbits.LATC2 = 0;
-				else
-					LATCbits.LATC2 = 1;
-				}
-				break;
-			case 0x34:{ 		
-				if(PORTCbits.RC3 == 1) 		
-					LATCbits.LATC3 = 0;
-				else
-					LATCbits.LATC3 = 1;
-				}
-				break;
-			case 0x35:{ 		
-				if(PORTCbits.RC4 == 1) 		
-					LATCbits.LATC4 = 0;
-				else
-					LATCbits.LATC4 = 1;
-				}
-				break;
-			case 0x36:{ 		
-				if(PORTCbits.RC5 == 1) 		
-					LATCbits.LATC5 = 0;
-				else
-					LATCbits.LATC5 = 1;
-				}
-				break;
-			case 0x37:{ 		
-				if(PORTBbits.RB5 == 1) 		
-					LATBbits.LATB5 = 0;
-				else
-					LATBbits.LATB5 = 1;
-				}
-				break;
-			case 0x38:{ 		
-				if(PORTBbits.RB7 == 1) 		
-					LATBbits.LATB7 = 0;
-				else
-					LATBbits.LATB7 = 1;
-				}
-				break;
+			break;
 			}
-		}	
-	
-	}		
-}	
+		}		
+	}
+}		
 
 /*///////////////////////////////////////////////////////
 		Interrupt Handlers
@@ -235,7 +247,7 @@ void main(void){
 
 	
 	while(1){
-		if(buffersize){
+		if(buffersize>1){
 			//There are characters in buffer
 			processDataPkt();
 			}
